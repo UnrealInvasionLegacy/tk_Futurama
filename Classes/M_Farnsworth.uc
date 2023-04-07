@@ -145,8 +145,6 @@ simulated function Notify_FireProjectile()
 	local rotator ProjRot;
 	local SeekingRocketProj S;
 
-	log("M_Farnsworth fireprojectile called", 'M_Farnsworth');
-
 	if ( Controller != None )
 	{
 		GetAxes(Rotation,X,Y,Z);
@@ -169,7 +167,7 @@ simulated function Notify_FireProjectile()
 		else
 			ProjRot.Yaw -= 3072; 
 		bRocketDir = !bRocketDir;
-		S = Spawn(class'skaarjpack.WarlordRocket',,,FireStart,ProjRot);
+		S = Spawn(class'tk_Futurama.FarnsworthProjectile',,,FireStart,ProjRot);
         S.Seeking = Controller.Enemy;
 		PlaySound(FireSound,SLOT_Interact);
 	}
