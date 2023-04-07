@@ -62,10 +62,13 @@ simulated function Explode(vector HitLocation, vector HitNormal)
 
 defaultproperties
 {
-     Speed=1000.000000
-     MaxSpeed=1000.000000
+     Speed=2000.000000
+     MaxSpeed=2000.000000
      Damage=300.000000
      DamageRadius=140.000000
+	 MomentumTransfer=50000.000000
+	 ForceRadius=100.000000
+     ForceScale=10.000000
      MyDamageType=Class'tk_Futurama.DamTypeFarnsworthProjectile'
      DrawType=DT_Sprite
      bHidden=True
