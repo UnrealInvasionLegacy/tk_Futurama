@@ -1,8 +1,7 @@
-class FarnsworthProjectile extends SeekingRocketProj;
-
-//REWRITE THIS ENTIRE CLASS USING PROJECTILE AS A PARENT RATHER THAN SEEKINGROCKETPROJ
+class FarnsworthProjectile extends Projectile;
 
 var Emitter FarnsworthProjectileEmitter;
+var vector Dir;
 
 simulated function Destroyed() 
 {
@@ -28,8 +27,8 @@ simulated function PostBeginPlay()
 		bDynamicLight = false;
 		LightType = LT_None;
 	}
-	 SetTimer(0.1, true);
-	Super(Projectile).PostBeginPlay();
+
+	Super.PostBeginPlay();
 }
 
 simulated function Landed( vector HitNormal )
@@ -59,38 +58,6 @@ simulated function Explode(vector HitLocation, vector HitNormal)
  	
 	BlowUp(HitLocation);
 	Destroy(); 
-}
-
-simulated function Timer()
-{
-    local vector ForceDir;
-    local float VelMag;
-
-    if ( InitialDir == vect(0,0,0) )
-        InitialDir = Normal(Velocity);
-         
-	Acceleration = vect(0,0,0);
-    Super.Timer();
-    if ( (Seeking != None) && (Seeking != Instigator) ) 
-    {
-		// Do normal guidance to target.
-		ForceDir = Normal(Seeking.Location - Location);
-		
-		if( (ForceDir Dot InitialDir) > 0 )
-		{
-			VelMag = VSize(Velocity);
-		
-			// track vehicles better
-			if ( Seeking.Physics == PHYS_Karma )
-				ForceDir = Normal(ForceDir * 4.8 * VelMag + Velocity);
-			else
-				ForceDir = Normal(ForceDir * 4.5 * VelMag + Velocity);
-			Velocity =  VelMag * ForceDir;  
-			Acceleration += 5 * ForceDir; 
-		}
-		// Update rocket so it faces in the direction its going.
-		SetRotation(rotator(Velocity));
-    }
 }
 
 defaultproperties

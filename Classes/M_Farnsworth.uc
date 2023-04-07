@@ -4,7 +4,6 @@ class M_Farnsworth extends tk_Monster
 #EXEC OBJ LOAD FILE="Resources/tk_Futurama_rc.u" PACKAGE="tk_Futurama"
 
 var ChairEffect	ChairEmitter;
-var bool bRocketDir;
 
 function PostBeginPlay()
 {
@@ -143,7 +142,7 @@ simulated function Notify_FireProjectile()
 {	
 	local vector FireStart,X,Y,Z;
 	local rotator ProjRot;
-	local SeekingRocketProj S;
+	local FarnsworthProjectile S;
 
 	if ( Controller != None )
 	{
@@ -161,14 +160,8 @@ simulated function Notify_FireProjectile()
 			SavedFireProperties.bInstantHit = MyAmmo.bInstantHit;
 			SavedFireProperties.bInitialized = true;
 		}
-		ProjRot = Controller.AdjustAim(SavedFireProperties,FireStart,600);
-		if ( bRocketDir )
-			ProjRot.Yaw += 3072; 
-		else
-			ProjRot.Yaw -= 3072; 
-		bRocketDir = !bRocketDir;
+		ProjRot = Controller.AdjustAim(SavedFireProperties,FireStart,0);
 		S = Spawn(class'tk_Futurama.FarnsworthProjectile',,,FireStart,ProjRot);
-        S.Seeking = Controller.Enemy;
 		PlaySound(FireSound,SLOT_Interact);
 	}
 }
