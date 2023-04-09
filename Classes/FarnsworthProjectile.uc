@@ -50,9 +50,8 @@ function BlowUp(vector HitLocation)
 
 simulated function Explode(vector HitLocation, vector HitNormal) 
 {
-	PlaySound(sound'WeaponSounds.BExplosion3',,2.5*TransientSoundVolume);
+	PlaySound(sound'WeaponSounds.ShockRifle.ShockRifleExplosion',,2.5*TransientSoundVolume);
 	spawn(class'FarnsworthProjectileExplosionFX',,,HitLocation + HitNormal*16 );
-	// spawn(class'FlashExplosion',,,HitLocation + HitNormal*16 );
 	if ( (ExplosionDecal != None) && (Level.NetMode != NM_DedicatedServer) )
 		Spawn(ExplosionDecal,self,,Location, rotator(-HitNormal));
  	
@@ -70,6 +69,9 @@ defaultproperties
 	 ForceRadius=100.000000
      ForceScale=10.000000
      MyDamageType=Class'tk_Futurama.DamTypeFarnsworthProjectile'
+	 AmbientSound=Sound'WeaponSounds.RocketLauncher.RocketLauncherProjectile'
+	 SoundVolume=255
+     SoundRadius=100.000000
      DrawType=DT_Sprite
      bHidden=True
      LifeSpan=6.000000

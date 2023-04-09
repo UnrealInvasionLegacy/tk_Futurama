@@ -185,6 +185,7 @@ defaultproperties
      ChallengeSound(1)=Sound'tk_Futurama.Farnsworth.TNTpffingers'
      ChallengeSound(2)=Sound'tk_Futurama.Farnsworth.TNTpfdisgust'
      ChallengeSound(3)=Sound'tk_Futurama.Farnsworth.ORDpfbored'
+	 FireSound(0)=Sound'WeaponSounds.LinkGun.BLinkedFire'
      ScoringValue=20
      MonsterName="Farnsworth"
      Health=100
