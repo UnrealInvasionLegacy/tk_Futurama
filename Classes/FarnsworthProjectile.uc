@@ -51,8 +51,8 @@ function BlowUp(vector HitLocation)
 simulated function Explode(vector HitLocation, vector HitNormal) 
 {
 	PlaySound(sound'WeaponSounds.BExplosion3',,2.5*TransientSoundVolume);
-	spawn(class'FlakExplosion',,,HitLocation + HitNormal*16 );
-	spawn(class'FlashExplosion',,,HitLocation + HitNormal*16 );
+	spawn(class'FarnsworthProjectileExplosionFX',,,HitLocation + HitNormal*16 );
+	// spawn(class'FlashExplosion',,,HitLocation + HitNormal*16 );
 	if ( (ExplosionDecal != None) && (Level.NetMode != NM_DedicatedServer) )
 		Spawn(ExplosionDecal,self,,Location, rotator(-HitNormal));
  	

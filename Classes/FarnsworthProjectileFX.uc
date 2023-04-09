@@ -91,8 +91,8 @@ defaultproperties
     End Object
     Emitters(2)=SpriteEmitter'FarnsworthProjectileFX.SpriteEmitter2'
 
-    bDirectional=True
-    bSelected=True
+    // bDirectional=True
+    // bSelected=True
     AutoDestroy=True
     bNoDelete=False
     RemoteRole=ROLE_SimulatedProxy
